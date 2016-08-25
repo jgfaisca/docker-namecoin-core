@@ -1,7 +1,7 @@
 
 #!/bin/bash
 #
-# Build docker image localy
+# Build local docker image
 #
 
 # Docker image
