@@ -4,11 +4,15 @@
 # Build local docker image
 #
 
-# Image name
-IMG="zekaf/namecoin-core"
+# change BUILDER
+sed -e 's/DOCKERHUB/LOCAL/g' Dockerfile > Dockerfile.local
 
-# Image tag
-TAG="latest"
+#set MAKEJOBS
+procs=$(grep processor /proc/cpuinfo | wc -l)
+procs=$((procs+1))
+sed -i -e 's/\-j3/\-j'${procs}'/g' Dockerfile.local
+
+IMAGE="$(grep IMAGE Dockerfile | awk '{print $3}' )"
 
 # Build image
-docker build -t $IMG:$TAG .
+docker build -f Dockerfile.local -t ${IMAGE} .
