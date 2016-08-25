@@ -4,8 +4,10 @@
 # Build local docker image
 #
 
-# Docker image
+# Image name
 IMG="zekaf/namecoin-core"
+
+# Image tag
 TAG="latest"
 
 # Build image
