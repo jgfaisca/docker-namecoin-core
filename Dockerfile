@@ -1,4 +1,4 @@
-# Namecoin & ubuntu
+# version 1.0
 
 FROM ubuntu:16.04
 MAINTAINER Jose G. Faisca <jose.faisca@gmail.com>
