@@ -56,6 +56,6 @@ RUN cd / \
 COPY run.sh /usr/local/bin/
 ENTRYPOINT ["run.sh"]
 
-EXPOSE 8336 8334
+EXPOSE 8336/tcp 8334/tcp
 VOLUME ["/data/namecoin"]
-CMD ["/usr/local/bin/namecoind", "-datadir=/data/namecoin", printtoconsole]
+CMD ["/usr/local/bin/namecoind", "-datadir=/data/namecoin", "-printtoconsole"]
