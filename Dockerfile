@@ -44,7 +44,9 @@ RUN git clone https://github.com/namecoin/namecoin-core.git \
         && make install
 
 # -- Change terminal emulator --
-RUN echo -e "\nexport TERM=xterm" >> ~/.bashrc
+RUN echo "" >> ~/.bashrc \
+        && echo "# change terminal emulator." >> ~/.bashrc \
+        && echo "export TERM=xterm" >> ~/.bashrc
 
 # -- Clean --
 RUN cd / \
