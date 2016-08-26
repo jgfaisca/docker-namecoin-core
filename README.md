@@ -1,2 +1,2 @@
-# docker-namecoin-core
+# docker-namecoind-core
 Automated dockerhub build for namecoin-core, a reimplementation of Namecoin on top of the current Bitcoin Core codebase. 
