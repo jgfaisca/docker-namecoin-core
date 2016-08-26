@@ -34,7 +34,7 @@ IMG="zekaf/namecoind-core"
 TAG="latest"
 
 # Host directory
-HOSTDIR=/opt/docker/data
+HOSTDIR="/opt/docker/data"
 
 # Container name
 NAME="$1"
