@@ -39,7 +39,7 @@ RUN git clone https://github.com/namecoin/namecoin-core.git \
         --disable-shared \
         --with-pic \
         --without-gui \
-        --enable-upnp-default \
+        --disable-upnp-default \
         && make \
         && make install
 
