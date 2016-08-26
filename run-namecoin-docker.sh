@@ -28,7 +28,7 @@ if [ $# -ne 1 ] ; then
 fi
 
 # Docker image
-IMG="zekaf/namecoin-core"
+IMG="zekaf/namecoind-core"
 
 # Image tag
 TAG="latest"
