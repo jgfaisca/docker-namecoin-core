@@ -27,8 +27,11 @@ NET_SUBNET=$(docker network inspect -f \
 '{{range .IPAM.Config}}{{.Subnet}}{{end}}' $NET_NAME)
 
 # Namecoin configuration
-RPC_USER=$(randomUser) # user name
-RPC_PASS=$(randomPass) # password
+RPC_USER=$(randomUser)
+RPC_PASS=$(randomPass)
+RPC_PORT="8336"
+PORT="8334"
+MAX_CONNECTIONS=10
 
 # Host directory
 HOSTDIR="/opt/docker/data"
@@ -42,7 +45,7 @@ docker run -d \
   -e RPC_USER=$RPC_USER \
   -e RPC_PASS=$RPC_PASS \
   -e RPC_ALLOW_IP=$NET_SUBNET \
-  -e MAX_CONNECTIONS=10 \
-  -e RPC_PORT=8336 \
-  -e PORT=8334 \
+  -e RPC_PORT=$RPC_PORT \
+  -e PORT=$PORT \
+  -e MAX_CONNECTIONS=$MAX_CONNECTIONS \
   $IMG:$TAG
