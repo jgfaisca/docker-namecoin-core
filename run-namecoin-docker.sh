@@ -23,17 +23,22 @@ TAG="latest"
 HOSTDIR="/opt/docker/data"
 
 # Namecoin container
-NAME="namecoin"
+NMC_CT="namecoin"
+
+# Namecoin IP
+NMC_IP="10.17.0.2"
 
 # Docker network (isolated network)
 RPC_ALLOW_IP="10.17.0.0/16"
 
+# RPC user & password
 RPC_USER=$(randomUser)
 RPC_PASS=$(randomPass)
 
 # Create docker container
 docker run -d \
-  --name $NAME \
+  --net isolated_nw --ip $NMC_IP \
+  --name $NMC_CT \
   --restart=always \
   --volume=$HOSTDIR/$NAME:/data/namecoin \
   -e RPC_USER=$RPC_USER \
