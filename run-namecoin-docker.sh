@@ -23,8 +23,7 @@ NMC_IP="10.17.0.2"
 
 # Docker network
 NET_NAME="isolated_nw"
-NET_SUBNET=$(docker network inspect -f \
-'{{range .IPAM.Config}}{{.Subnet}}{{end}}' $NET_NAME)
+NET_SUBNET=$(docker network inspect -f '{{range .IPAM.Config}}{{.Subnet}}{{end}}' $NET_NAME)
 
 # Namecoin configuration
 RPC_USER=$(randomUser)
@@ -41,7 +40,7 @@ docker run -d \
   --net $NET_NAME --ip $NMC_IP \
   --name $NMC_CT \
   --restart=always \
-  --volume=$HOSTDIR/$NAME:/data/namecoin \
+  --volume=$HOSTDIR/$NMC_CT:/data/namecoin \
   -e RPC_USER=$RPC_USER \
   -e RPC_PASS=$RPC_PASS \
   -e RPC_ALLOW_IP=$NET_SUBNET \
