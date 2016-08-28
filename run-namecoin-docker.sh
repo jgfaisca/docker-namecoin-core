@@ -31,7 +31,7 @@ RPC_USER=$(randomUser)
 RPC_PASS=$(randomPass)
 RPC_PORT="8336"
 PORT="8334"
-MAX_CONNECTIONS=10
+MAX_CONNECTIONS="10"
 
 # Host directory
 HOSTDIR="/opt/docker/data"
