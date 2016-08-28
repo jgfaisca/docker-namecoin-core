@@ -23,9 +23,9 @@ TAG="latest"
 HOSTDIR="/opt/docker/data"
 
 # Namecoin container
-NMC_CT="namecoin"
+NMC_CT="namecoin-core"
 
-# Namecoin container IP
+# Namecoin IP
 NMC_IP="10.17.0.2"
 
 # Docker network (isolated network)
@@ -40,7 +40,7 @@ docker run -d \
   --net isolated_nw --ip $NMC_IP \
   --name $NMC_CT \
   --restart=always \
-  --volume=$HOSTDIR/$NAME:/data/namecoin \
+  --volume=/opt/docker/volumes/namecoin-core/namecoin:/data/namecoin \
   -e RPC_USER=$RPC_USER \
   -e RPC_PASS=$RPC_PASS \
   -e RPC_ALLOW_IP=$RPC_ALLOW_IP \
