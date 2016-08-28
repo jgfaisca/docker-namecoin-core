@@ -5,7 +5,7 @@
 
 # Random password function
 function randomPass(){
-  < /dev/urandom tr -dc _#A-Z-a-z-0-9 | head -c${1:-32};echo;
+  < /dev/urandom tr -dc A-Z-a-z-0-9 | head -c${1:-32};echo;
 }
 
 # Random user function
