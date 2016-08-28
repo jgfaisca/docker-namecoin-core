@@ -25,6 +25,9 @@ HOSTDIR="/opt/docker/data"
 # Namecoin container
 NAME="namecoin"
 
+# Docker network (isolated network)
+RPC_ALLOW_IP="10.17.0.0/16"
+
 RPC_USER=$(randomUser)
 RPC_PASS=$(randomPass)
 
@@ -35,7 +38,7 @@ docker run -d \
   --volume=$HOSTDIR/$NAME:/data/namecoin \
   -e RPC_USER=$RPC_USER \
   -e RPC_PASS=$RPC_PASS \
-  -e RPC_ALLOW_IP="172.17.0.0/16" \
+  -e RPC_ALLOW_IP=$RPC_ALLOW_IP \
   -e MAX_CONNECTIONS=10 \
   -e RPC_PORT=8336 \
   -e PORT=8334 \
