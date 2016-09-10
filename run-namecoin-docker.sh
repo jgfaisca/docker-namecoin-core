@@ -18,7 +18,7 @@ IMG="zekaf/namecoin-core"
 TAG="latest"
 
 # Docker Namecoin container
-NMC_CT="namecoin"
+NMC_CT="net1-namecoin-node"
 NMC_IP="10.17.0.2"
 
 # Docker network
@@ -31,6 +31,7 @@ RPC_PASS=$(randomPass)
 RPC_PORT="8336"
 PORT="8334"
 MAX_CONNECTIONS="10"
+NETWORK=""
 
 # Host directory
 HOSTDIR="/opt/docker/data"
@@ -47,4 +48,5 @@ docker run -d \
   -e RPC_PORT=$RPC_PORT \
   -e PORT=$PORT \
   -e MAX_CONNECTIONS=$MAX_CONNECTIONS \
+  -e NETWORK=$NETWORK \
   $IMG:$TAG

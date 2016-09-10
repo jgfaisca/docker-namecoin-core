@@ -5,6 +5,7 @@ MAINTAINER Jose G. Faisca <jose.faisca@gmail.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# -- Namecoin variables ---
 ENV IMAGE namecoin/namecoin-core
 ENV RPC_USER rpc
 ENV RPC_PASS secret
@@ -12,16 +13,20 @@ ENV RPC_ALLOW_IP 127.0.0.1
 ENV MAX_CONNECTIONS 15
 ENV RPC_PORT 8336
 ENV PORT 8334
+ENV NETWORK "" # mainnet
+
+# -- Terminal ---
+ENV TERM xterm
 
 # -- Install main independencies --
 RUN apt-get update \
-        && apt-get install -y libboost-all-dev \
-        dh-autoreconf curl libcurl4-openssl-dev \
-        git apg libboost-all-dev build-essential libtool \
-        libevent-dev wget bsdmainutils autoconf \
-        apg libqrencode-dev libcurl4-openssl-dev \
-        automake make libssl-dev libminiupnpc-dev \
-        pkg-config libzmq3-dev
+        && apt-get install -y curl iproute2 git \
+	libboost-all-dev dh-autoreconf \
+	libcurl4-openssl-dev apg libboost-all-dev \
+	build-essential libtool libevent-dev \
+	bsdmainutils autoconf apg libqrencode-dev \
+	libcurl4-openssl-dev automake make libssl-dev \
+	libminiupnpc-dev pkg-config libzmq3-dev
         
 # -- Install BerkeleyDB 4.8 (required for the wallet) --
 RUN apt-get install -y software-properties-common \
@@ -43,11 +48,6 @@ RUN git clone https://github.com/namecoin/namecoin-core.git \
         && make \
         && make install
 
-# -- Change terminal emulator --
-RUN echo "" >> ~/.bashrc \
-        && echo "# change terminal emulator." >> ~/.bashrc \
-        && echo "export TERM=xterm" >> ~/.bashrc
-
 # -- Clean --
 RUN cd / \
         && rm -rf /namecoin-core \
@@ -60,4 +60,4 @@ ENTRYPOINT ["run.sh"]
 
 EXPOSE $RPC_PORT/tcp $PORT/tcp
 VOLUME ["/data/namecoin"]
-CMD ["/usr/local/bin/namecoind", "-datadir=/data/namecoin", "-printtoconsole"]
+CMD ["namecoind", "-datadir=/data/namecoin", "-printtoconsole"]

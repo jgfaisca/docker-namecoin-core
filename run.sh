@@ -5,6 +5,8 @@
 
 set -eo pipefail
 
+conf="/data/namecoin/namecoin.conf"
+
 echo "server=1
 daemon=0
 maxconnections=${MAX_CONNECTIONS}
@@ -15,6 +17,8 @@ rpcallowip=${RPC_ALLOW_IP}
 rpcport=${RPC_PORT}
 port=${PORT}
 listen=1
-txindex=1" > /data/namecoin/namecoin.conf
+txindex=1" > $conf
+
+[ -n "${NETWORK}" ] && echo "${NETWORK}=1" >> $conf
 
 exec "$@"
