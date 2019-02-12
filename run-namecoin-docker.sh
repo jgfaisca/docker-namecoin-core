@@ -14,7 +14,7 @@ function randomUser(){
 }
 
 # Docker image
-IMG="zekaf/namecoin-core"
+IMG="demo/namecoin-core"
 TAG="latest"
 
 # Docker Namecoin container
