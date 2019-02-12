@@ -22,5 +22,9 @@ SUBNET="10.17.0.0/16"
 GATEWAY="10.17.0.1"
 
 # create a new bridge network with your subnet and gateway for your ip block
-docker network create --subnet $SUBNET --gateway $GATEWAY $NETNAME
+CMD="docker -D network create --subnet $SUBNET --gateway $GATEWAY $NETNAME"
+echo $CMD
 
+if eval $CMD ; then
+    docker network inspect --verbose NETWORK $NETNAME
+fi
