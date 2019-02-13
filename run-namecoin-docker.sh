@@ -3,6 +3,13 @@
 # Create docker container
 #
 
+if [ "$#" -ne 2 ]; then
+ echo
+ echo "Usage: ./$(basename $0) <container_name> <ip_address>"
+ echo
+ exit 1
+fi
+
 # Random password function
 function randomPass(){
   < /dev/urandom tr -dc A-Z-a-z-0-9 | head -c${1:-32};echo;
@@ -18,8 +25,8 @@ IMG="demo/namecoin-core"
 TAG="latest"
 
 # Docker Namecoin container
-NMC_CT="net1-namecoin-node"
-NMC_IP="10.17.0.2"
+NMC_CT="$1"
+IP_ADDRESS="$2"
 
 # Docker network
 NET_NAME="isolated_nw"
@@ -38,7 +45,7 @@ HOSTDIR="/opt/docker/data"
 
 # Create docker container
 docker run -d \
-  --net $NET_NAME --ip $NMC_IP \
+  --net $NET_NAME --ip $IP_ADDRESS \
   --name $NMC_CT \
   --restart=always \
   --volume=$HOSTDIR/$NMC_CT:/data/namecoin \
