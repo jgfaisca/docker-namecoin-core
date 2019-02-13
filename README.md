@@ -10,7 +10,7 @@ $ ./run-namecoin-docker.sh nmc-node 10.17.0.2<br>
 $ docker logs -f nmc-node  
 
 ### TEST
-$ docker exec -it 'nmc-node' 
+$ docker exec -it 'nmc-node' namecoin-cli -version
 
 ### SHELL CONSOLE
 $ docker exec -it 'nmc-node' bash
