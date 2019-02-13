@@ -14,9 +14,9 @@ $ ./run-namecoin-docker.sh nmc-node 10.17.0.2
 $ docker logs -f nmc-node  
 
 ### TEST
-#### Namecoin version
+#### Version
 $ docker exec -it 'nmc-node' namecoin-cli -version
-#### Get general information from the node
+#### Information
 $ docker exec -it 'nmc-node' namecoin-cli -datadir=/data/namecoin -getinfo
 
 ### CONSOLE
