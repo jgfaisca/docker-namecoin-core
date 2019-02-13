@@ -1,10 +1,10 @@
 # docker-namecoind-core
 Automated dockerhub build for namecoin-core, a reimplementation of Namecoin on top of the current Bitcoin Core codebase. 
 
-# CREATE NETWORK
+### NETWORK
 $ ./create-docker-network.sh 
 
-# BUILD IMAGE
+### IMAGE
 $ ./build_local.sh 
 
 ### RUN
@@ -19,5 +19,5 @@ $ docker exec -it 'nmc-node' namecoin-cli -version
 #### Get general information from the node
 $ docker exec -it 'nmc-node' namecoin-cli -datadir=/data/namecoin -getinfo
 
-### SHELL CONSOLE
+### CONSOLE
 $ docker exec -it 'nmc-node' bash
